@@ -6,7 +6,8 @@ RRTBase.py - is to be imported while running RRT.py and it contains the function
 
 Note - Download both the python files to the same directory and execute.
 
-/*********************************************************************************************************************************************************************************/
+/*******************************************************************************************************************************/
+
 To simulate and visualise the working, map is created using pygame libraries with obstacles being randomly distributed in the map
 
 And the following reference is been used to implement RRT algorithm in python - https://www.youtube.com/watch?v=TzfNzqjJ2VQ. 
