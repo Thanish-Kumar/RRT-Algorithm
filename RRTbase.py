@@ -48,7 +48,7 @@ class RRTMap:
                pygame.draw.rect(self.map, self.grey, obstacle)
 
 class RRTGraph:
-     def __init__(self, start, goal, MapDim, obsdim, obsnum):
+     def __init__(self, start, goal, MapDim, obsdim, obsnum, obs_location):
           (x,y) = start
           self.start = start
           self.goal = goal
@@ -69,6 +69,7 @@ class RRTGraph:
           obstackes = []
           self.obsdim = obsdim
           self.obsnum = obsnum
+          self.obs_loc = obs_location
 
           #path
           self.goalState = None # flag to show if destination reached
@@ -88,10 +89,11 @@ class RRTGraph:
                rectang = None # holds variable before storing it in list
                startgoalcol = True # indicates start or goal pos are insided newly created obstacle
                while startgoalcol:
-                    upper = self.makeRandomRect()
+                    upper = self.obs_loc[i]
                     rectang = pygame.Rect(upper,(self.obsdim,self.obsdim))
                     if rectang.collidepoint(self.start) or rectang.collidepoint(self.goal):
                          startgoalcol = True
+                         self.obs_loc[i] = self.makeRandomRect() # makes a random obstacle if the obstacle postition input given collides with start or destination node
                     else:
                          startgoalcol = False
                obs.append(rectang)

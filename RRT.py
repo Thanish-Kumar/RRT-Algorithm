@@ -3,16 +3,17 @@ from RRTbase import RRTGraph
 from RRTbase import RRTMap
 
 def main():
-     dimensions = (600, 1000)
+     dimensions = (600, 1000) #(height, width)
      start = (50, 50)
      goal = (510, 510)
      obsdim = 30
-     obsnum = 50
+     obsnum = 5
      iteration = 0
+     obs_location = [(17,12), (52,58), (470, 470), (500, 470), (520, 520)] #(x, y), for (x < width) and (y < height)
 
      pygame.init()
      map_1 = RRTMap(start, goal, dimensions, obsdim, obsnum)
-     graph = RRTGraph(start, goal, dimensions, obsdim, obsnum)
+     graph = RRTGraph(start, goal, dimensions, obsdim, obsnum, obs_location)
 
      obstacles = graph.makeObs()
      map_1.drawMap(obstacles)
