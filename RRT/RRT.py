@@ -41,7 +41,7 @@ def main():
 
      map_1.drawPath(graph.path_to_goal())
      pygame.display.update()
-     pygame.event.clear(0)
+     pygame.event.clear()
      pygame.event.wait(0)
 
 if __name__ == '__main__':
