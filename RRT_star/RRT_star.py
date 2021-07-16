@@ -22,17 +22,21 @@ def main():
 
           if iteration%10 == 0:
                x, y, parent=graph.bias(goal)
+               '''
                pygame.draw.circle(map_1.map, map_1.grey, (x[-1], y[-1]),
                                   map_1.nodeRad+2, 0)
                pygame.draw.line(map_1.map, map_1.blue, (x[-1], y[-1]),
                                 (x[parent[-1]], y[parent[-1]]))
+               '''
 
           else:
                x, y, parent = graph.expand()
+               '''
                pygame.draw.circle(map_1.map, map_1.grey, (x[-1], y[-1]),
                                   map_1.nodeRad+2, 0)
                pygame.draw.line(map_1.map, map_1.blue, (x[-1], y[-1]),
                                 (x[parent[-1]], y[parent[-1]]))
+               '''
 
           if iteration%5 == 0:
                pygame.display.update()

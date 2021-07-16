@@ -42,9 +42,20 @@ class RRTMap:
     def drawObs(self, obstacles):
         obstaclesList = obstacles.copy()
 
-        while (len(obstaclesList) > 0):
+        while len(obstaclesList) > 0:
             obstacle = obstaclesList.pop(0)
             pygame.draw.rect(self.map, self.grey, obstacle)
+
+    def drawEdge(self, obstacles, no_nodes, x, y, parent):
+        self.map.fill((255, 255, 255))
+        self.drawMap(obstacles)
+        print(len(x), len(parent))
+        for i in range (1, no_nodes):
+            print(i)
+            pygame.draw.circle(self.map, self.grey, (x[i], y[i]),
+                               self.nodeRad + 2, 0)
+            pygame.draw.line(self.map, self.blue, (x[i], y[i]),
+                             (x[parent[i]], y[parent[i]]))
 
 
 class RRTGraph:
@@ -188,18 +199,17 @@ class RRTGraph:
                         cost_min = self.cost[node] + self.distance(node, node)
                         node_min = node
 
+            self.add_edge(node_min, nnew)
+
             for node in Node_near:
                 if not self.crossObstacle(self.x[node], self.y[node], x2, y2):
                     t = self.cost[nnew] + self.distance(nnew, nnear)
                     if t < self.cost[node]:
-                        pygame.draw.line(self.map.map, self.map.white, (self.x[node], self.y[node]),
-                                         (self.x[self.parent[node]], self.y[self.parent[node]]))
                         self.remove_edge(node)
                         self.add_edge(nnew, node)
-                        pygame.draw.line(self.map.map, self.map.blue, (self.x[node], self.y[node]),
-                                         (self.x[self.parent[node]], self.y[self.parent[node]]))
 
-            self.add_edge(node_min, nnew)
+            self.map.drawEdge(self.obstacles, nnew, self.x, self.y, self.parent)
+
             return True
 
     def step(self, nnear, nrand, dmax=35):
