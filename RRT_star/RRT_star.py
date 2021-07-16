@@ -1,6 +1,6 @@
 import pygame
-from RRTbase import RRTGraph
-from RRTbase import RRTMap
+from RRTbase_star import RRTGraph
+from RRTbase_star import RRTMap
 
 def main():
      dimensions = (600, 1000) #(height, width)
@@ -13,7 +13,7 @@ def main():
 
      pygame.init()
      map_1 = RRTMap(start, goal, dimensions, obsdim, obsnum)
-     graph = RRTGraph(start, goal, dimensions, obsdim, obsnum, obs_location)
+     graph = RRTGraph(start, goal, dimensions, obsdim, obsnum, obs_location, map_1)
 
      obstacles = graph.makeObs()
      map_1.drawMap(obstacles)
@@ -41,7 +41,7 @@ def main():
 
      map_1.drawPath(graph.path_to_goal())
      pygame.display.update()
-     pygame.event.clear(0)
+     pygame.event.clear()
      pygame.event.wait(0)
 
 if __name__ == '__main__':
