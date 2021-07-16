@@ -50,7 +50,7 @@ class RRTMap:
         self.map.fill((255, 255, 255))
         self.drawMap(obstacles)
         print(len(x), len(parent))
-        for i in range (1, no_nodes):
+        for i in range (1, no_nodes+1):
             print(i)
             pygame.draw.circle(self.map, self.grey, (x[i], y[i]),
                                self.nodeRad + 2, 0)
@@ -225,10 +225,8 @@ class RRTGraph:
             self.remove_node(nrand)
             self.add_node(nrand, x, y)
 
-            if abs(x - self.goal[0]) < dmax and abs(
-                    y - self.goal[1]) < dmax:  # could be stated more clearly as distance between two points
-                if not self.crossObstacle(self.goal[0], self.goal[1], xnear,
-                                          ynear):  # correction 1 - to check there is path btw
+            if abs(x - self.goal[0]) < dmax and abs(y - self.goal[1]) < dmax:
+                if not self.crossObstacle(self.goal[0], self.goal[1], xnear,ynear):  # correction 1 - to check there is path btw
                     self.remove_node(nrand)
                     self.add_node(nrand, self.goal[0], self.goal[1])
                     self.goalState = nrand
