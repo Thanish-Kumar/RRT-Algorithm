@@ -36,8 +36,11 @@ class RRTMap:
         self.drawObs(obstacles)
 
     def drawPath(self, path):
-        for i in path:
-            pygame.draw.circle(self.map, self.red, i, self.nodeRad + 3, 0)
+        for i in range(len(path)):
+            pygame.draw.circle(self.map, self.red, path[i], self.nodeRad + 3, 0)
+            print(path[i])
+            if i!=0:
+                pygame.draw.line(self.map, self.blue, path[i], path[i-1])
 
     def drawObs(self, obstacles):
         obstaclesList = obstacles.copy()
@@ -52,10 +55,8 @@ class RRTMap:
         print(len(x), len(parent))
         for i in range (1, no_nodes+1):
             print(i)
-            pygame.draw.circle(self.map, self.grey, (x[i], y[i]),
-                               self.nodeRad + 2, 0)
-            pygame.draw.line(self.map, self.blue, (x[i], y[i]),
-                             (x[parent[i]], y[parent[i]]))
+            pygame.draw.circle(self.map, self.grey, (x[i], y[i]), self.nodeRad + 2, 0)
+            pygame.draw.line(self.map, self.blue, (x[i], y[i]), (x[parent[i]], y[parent[i]]))
 
 
 class RRTGraph:

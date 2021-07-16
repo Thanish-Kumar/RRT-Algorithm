@@ -37,7 +37,7 @@ def main():
         iteration += 1
 
     map_1.map.fill((255, 255, 255))
-    map_1.drawMap()
+    map_1.drawMap(obstacles)
     map_1.drawPath(graph.path_to_goal())
     pygame.display.update()
     pygame.event.clear()
