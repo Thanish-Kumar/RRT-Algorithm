@@ -38,7 +38,6 @@ class RRTMap:
     def drawPath(self, path):
         for i in range(len(path)):
             pygame.draw.circle(self.map, self.red, path[i], self.nodeRad + 3, 0)
-            print(path[i])
             if i!=0:
                 pygame.draw.line(self.map, self.blue, path[i], path[i-1])
 
@@ -52,9 +51,7 @@ class RRTMap:
     def drawEdge(self, obstacles, no_nodes, x, y, parent):
         self.map.fill((255, 255, 255))
         self.drawMap(obstacles)
-        print(len(x), len(parent))
         for i in range (1, no_nodes+1):
-            print(i)
             pygame.draw.circle(self.map, self.grey, (x[i], y[i]), self.nodeRad + 2, 0)
             pygame.draw.line(self.map, self.blue, (x[i], y[i]), (x[parent[i]], y[parent[i]]))
 
