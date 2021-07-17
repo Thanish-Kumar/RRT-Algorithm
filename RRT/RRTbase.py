@@ -187,7 +187,7 @@ class RRTGraph:
                (x, y) = (int(xnear+math.cos(theta)*dmax),
                          int(ynear+math.sin(theta)*dmax))
                self.remove_node(nrand)
-               if abs(x-self.goal[0])<dmax and abs(y-self.goal[1])<dmax: #could be stated more clearly as distance between two points
+               if abs(x-self.goal[0])<dmax and abs(y-self.goal[1])<dmax:
                     if not self.crossObstacle(self.goal[0], self.goal[1], xnear, ynear):# correction 1 - to check there is path btw
                          self.add_node(nrand, self.goal[0], self.goal[1])
                          self.goalState = nrand
@@ -201,7 +201,7 @@ class RRTGraph:
                (xnear, ynear) = (self.x[nnear], self.y[nnear])
                (x, y) = (self.x[nrand], self.y[nrand])
 
-               if abs(x - self.goal[0]) < dmax and abs(y - self.goal[1]) < dmax:  # could be stated more clearly as distance between two points
+               if abs(x - self.goal[0]) < dmax and abs(y - self.goal[1]) < dmax:  
                     if not self.crossObstacle(self.goal[0], self.goal[1], xnear, ynear):  # correction 1 - to check there is path btw
                          self.remove_node(nrand)
                          self.add_node(nrand, self.goal[0], self.goal[1])

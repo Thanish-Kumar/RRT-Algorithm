@@ -98,14 +98,14 @@ class RRTGraph:
 
         for i in range(0, self.obsnum):
             rectang = None  # holds variable before storing it in list
-            startgoalcol = True  # indicates start or goal pos are insided newly created obstacle
+            startgoalcol = True  # indicates start or goal pos are inside newly created obstacle
             while startgoalcol:
                 upper = self.obs_loc[i]
                 rectang = pygame.Rect(upper, (self.obsdim, self.obsdim))
                 if rectang.collidepoint(self.start) or rectang.collidepoint(self.goal):
                     startgoalcol = True
                     self.obs_loc[
-                        i] = self.makeRandomRect()  # makes a random obstacle if the obstacle postition input given collides with start or destination node
+                        i] = self.makeRandomRect()  # makes a random obstacle if the obstacle position input given collides with start or destination node
                 else:
                     startgoalcol = False
             obs.append(rectang)
@@ -235,7 +235,7 @@ class RRTGraph:
             (x, y) = (self.x[nrand], self.y[nrand])
 
             if abs(x - self.goal[0]) < dmax and abs(
-                    y - self.goal[1]) < dmax:  # could be stated more clearly as distance between two points
+                    y - self.goal[1]) < dmax:
                 if not self.crossObstacle(self.goal[0], self.goal[1], xnear,
                                           ynear):  # correction 1 - to check there is path btw
                     self.remove_node(nrand)
