@@ -187,7 +187,7 @@ class RRTGraph:
         else:
             self.cost.insert(nnew, (self.cost[nnear] + self.distance(nnew, nnear)))  # cost updated
 
-            Node_near = self.near(nnew, 35)
+            Node_near = self.near(nnew, 35) # 35 is dmax set in step function
             cost_min = self.cost[nnear] + self.distance(nnear, nnew)
             node_min = nnear
 
@@ -292,7 +292,7 @@ class RRTGraph:
 
     def near(self, n, r):
         Node_near = []
-        sigma = 2*((1.5)**(1/2))*((self.maph*self.mapw - n*16*3.14)/ (16*3.14))**(1/2)
+        sigma = 2*((1.5)**(1/2))*((self.maph*self.mapw - n*16*3.14)/ (16*3.14))**(1/2) # 16 = r^2, where r is node radius 4 here
         r = min(sigma*(math.log(n)/n)**(1/2), r)
         for i in range(0, n):
             if self.distance(i, n) < r:
