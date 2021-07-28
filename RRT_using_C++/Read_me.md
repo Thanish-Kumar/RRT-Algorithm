@@ -17,5 +17,5 @@ $ g++ RRT.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
 $ ./sfml-app
 
 # Reference
-https://www.youtube.com/watch?v=TzfNzqjJ2VQ - implementation of RRT in python  - 
+https://www.youtube.com/watch?v=TzfNzqjJ2VQ - implementation of RRT in python.
 
